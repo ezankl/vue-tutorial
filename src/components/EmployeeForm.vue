@@ -4,21 +4,25 @@
       <label for>Employee name</label>
       <input
         ref="first"
-        :class="{'has-error' : submitting && invalidName }"
+        :class="{ 'has-error': submitting && invalidName }"
         @focus="clearStatus"
         @keypress="clearStatus"
         v-model="employee.name"
         type="text"
-      >
+      />
       <label for>Employee Email</label>
       <input
-        :class="{'has-error': submitting && invalidEmail}"
+        :class="{ 'has-error': submitting && invalidEmail }"
         @focus="clearStatus"
         v-model="employee.email"
         type="text"
-      >
-      <p v-if="error && submitting" class="error-message">❗Please fill out all required fields</p>
-      <p v-if="success" class="success-message">✅ Employee successfully added</p>
+      />
+      <p v-if="error && submitting" class="error-message">
+        ❗Please fill out all required fields
+      </p>
+      <p v-if="success" class="success-message">
+        ✅ Employee successfully added
+      </p>
 
       <button>Add Employee</button>
     </form>
@@ -34,8 +38,8 @@ export default {
       success: false,
       employee: {
         name: "",
-        email: ""
-      }
+        email: "",
+      },
     };
   },
   methods: {
@@ -47,12 +51,13 @@ export default {
         this.error = true;
         return;
       }
+      //test
 
       this.$emit("add:employee", this.employee);
       this.$refs.first.focus();
       this.employee = {
         name: "",
-        email: ""
+        email: "",
       };
 
       this.error = false;
@@ -62,7 +67,7 @@ export default {
     clearStatus() {
       this.success = false;
       this.error = false;
-    }
+    },
   },
   computed: {
     invalidName() {
@@ -70,8 +75,8 @@ export default {
     },
     invalidEmail() {
       return this.employee.email === "";
-    }
-  }
+    },
+  },
 };
 </script>
 
