@@ -65,6 +65,7 @@ export default {
       this.submitting = false;
     },
     clearStatus() {
+      //test3
       this.success = false;
       this.error = false;
     },
